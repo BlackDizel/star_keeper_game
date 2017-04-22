@@ -73,12 +73,17 @@ public class ControllerRays {
 
     private void addRay() {
         if (lRays == null) lRays = new ArrayList<RayInfo>();
-        lRays.add(new RayInfo(ControllerPlayer.getInstance().getPositionX(), ControllerPlayer.getInstance().getPositionY(), getRotation()));
+        lRays.add(new RayInfo(ControllerPlayer.getInstance().getPositionX(), ControllerPlayer.getInstance().getPositionY(),
+                ControllerInput.getInstance().getAimPositionX(), ControllerInput.getInstance().getAimPositionY()));
     }
 
-    private float getRotation() {
-        return (float) Math.toDegrees(Math.atan2(ControllerInput.getInstance().getAimPositionY() - ControllerPlayer.getInstance().getPositionY()
-                , ControllerInput.getInstance().getAimPositionX() - ControllerPlayer.getInstance().getPositionX()));
+    boolean isAttacking(float positionCenterX, float positionCenterY) {
+        if (lRays == null) return false;
+        for (RayInfo item : lRays)
+            if (item.isAttacking(positionCenterX, positionCenterY))
+                return true;
+
+        return false;
     }
 }
 
