@@ -1,7 +1,6 @@
 package org.byters.ld38game.view;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import org.byters.engine.view.IScreen;
 import org.byters.ld38game.controller.ControllerBridge;
 import org.byters.ld38game.controller.ControllerPlanet;
@@ -12,6 +11,7 @@ public class ScreenGame implements IScreen {
     private ViewPlayer viewPlayer;
     private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
+    private ViewStars viewStars;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -19,7 +19,7 @@ public class ScreenGame implements IScreen {
         //todo draw background
         viewPlanet.draw(batch);
         viewBridge.draw(batch);
-        //todo draw stars
+        viewStars.draw(batch);
         //todo draw enemies
         //todo draw rays
         viewPlayer.draw(batch);
@@ -37,6 +37,8 @@ public class ScreenGame implements IScreen {
         viewBridge = new ViewBridge();
         viewBridge.load();
 
+        viewStars = new ViewStars();
+        viewStars.load();
     }
 
     @Override
@@ -56,5 +58,6 @@ public class ScreenGame implements IScreen {
         viewPlayer.dispose();
         viewPlanet.dispose();
         viewBridge.dispose();
+        viewStars.dispose();
     }
 }
