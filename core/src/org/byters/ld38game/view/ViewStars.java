@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.ld38game.controller.ControllerStars;
+import org.byters.ld38game.model.StarInfo;
 
 
 class ViewStars {
@@ -17,6 +18,7 @@ class ViewStars {
 
     void load() {
         tStar = new Texture(Gdx.files.internal(TEXTURE_STAR));
+        StarInfo.setOrigin(tStar.getWidth() / 2, tStar.getHeight() / 2);
     }
 
     void dispose() {
