@@ -42,4 +42,32 @@ public class ControllerStars {
         StarInfo star = getStar(i);
         return star == null ? 0 : star.getPositionY();
     }
+
+    StarInfo getNearestStar(float positionX, float positionY) {
+        if (lStars == null) return null;
+
+        StarInfo star = null;
+
+        for (StarInfo item : lStars) {
+            if (star == null) {
+                star = item;
+                continue;
+            }
+
+            if (item.distance(positionX, positionY) <
+                    star.distance(positionX, positionY))
+                star = item;
+        }
+
+        return star;
+    }
+
+    float getStarsLightPower() {
+        if (lStars == null) return 0;
+        int power = 0;
+        for (StarInfo item : lStars)
+            if (!ControllerEnemies.getInstance().isStarAttacked(item))
+                ++power;
+        return power / (float)lStars.size();
+    }
 }
