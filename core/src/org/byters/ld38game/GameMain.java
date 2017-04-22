@@ -1,33 +1,43 @@
 package org.byters.ld38game;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Color;
+
+import org.byters.engine.Engine;
+import org.byters.ld38game.view.HelperFont;
+import org.byters.ld38game.view.ScreenGame;
 
 public class GameMain extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
+
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		HelperFont.getInstance().load();
+		Engine.getInstance().create(new ScreenGame());
+		setColorClear();
+	}
+
+	private void setColorClear() {
+		Color colorClear = new Color();
+		colorClear.r = 0.1f;
+		colorClear.g = 0.1f;
+		colorClear.b = 0.1f;
+		colorClear.a = 1f;
+		Engine.getInstance().setColorClear(colorClear);
 	}
 
 	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+	public void render() {
+		Engine.getInstance().render();
 	}
-	
+
 	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
+	public void dispose() {
+		Engine.getInstance().dispose();
+		HelperFont.getInstance().dispose();
 	}
+
+	public void resize(int width, int height) {
+		Engine.getInstance().resize(width, height);
+	}
+
 }
