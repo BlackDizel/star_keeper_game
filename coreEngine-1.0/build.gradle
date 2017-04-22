@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('coreEngine-1.0.jar'))
