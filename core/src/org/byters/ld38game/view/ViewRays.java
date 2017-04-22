@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import org.byters.ld38game.controller.ControllerRays;
+import org.byters.ld38game.model.RayInfo;
 
 
 class ViewRays {
@@ -32,6 +33,7 @@ class ViewRays {
     void load() {
         tRay = new TextureRegion(new Texture(Gdx.files.internal(TEXTURE_RAY)));
         tRay.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        RayInfo.setAttackDistance(tRay.getRegionHeight() / 2);
     }
 
     void dispose() {
