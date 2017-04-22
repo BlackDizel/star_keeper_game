@@ -5,6 +5,7 @@ import org.byters.engine.view.IScreen;
 import org.byters.ld38game.controller.ControllerBridge;
 import org.byters.ld38game.controller.ControllerPlanet;
 import org.byters.ld38game.controller.ControllerPlayer;
+import org.byters.ld38game.controller.ControllerRays;
 
 public class ScreenGame implements IScreen {
 
@@ -12,6 +13,7 @@ public class ScreenGame implements IScreen {
     private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
     private ViewStars viewStars;
+    private ViewRays viewRays;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -21,7 +23,7 @@ public class ScreenGame implements IScreen {
         viewBridge.draw(batch);
         viewStars.draw(batch);
         //todo draw enemies
-        //todo draw rays
+        viewRays.draw(batch);
         viewPlayer.draw(batch);
 
     }
@@ -39,6 +41,9 @@ public class ScreenGame implements IScreen {
 
         viewStars = new ViewStars();
         viewStars.load();
+
+        viewRays = new ViewRays();
+        viewRays.load();
     }
 
     @Override
@@ -46,11 +51,13 @@ public class ScreenGame implements IScreen {
         ControllerPlayer.getInstance().update();
         ControllerPlanet.getInstance().update();
         ControllerBridge.getInstance().update();
+        ControllerRays.getInstance().update();
     }
 
     @Override
     public void input() {
         ControllerPlayer.getInstance().input();
+        ControllerRays.getInstance().input();
     }
 
     @Override
@@ -59,5 +66,6 @@ public class ScreenGame implements IScreen {
         viewPlanet.dispose();
         viewBridge.dispose();
         viewStars.dispose();
+        viewRays.dispose();
     }
 }

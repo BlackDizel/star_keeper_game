@@ -17,12 +17,24 @@ class ControllerInput {
     boolean isRightPressed() {
         //todo  add gamepad support
         return Gdx.input.isKeyPressed(Input.Keys.D)
-                ||Gdx.input.isKeyPressed(Input.Keys.RIGHT);
+                || Gdx.input.isKeyPressed(Input.Keys.RIGHT);
     }
 
     boolean isLeftPressed() {
         //todo  add gamepad support
         return Gdx.input.isKeyPressed(Input.Keys.A)
-                ||Gdx.input.isKeyPressed(Input.Keys.LEFT);
+                || Gdx.input.isKeyPressed(Input.Keys.LEFT);
+    }
+
+    boolean isShoot() {
+        return Gdx.input.isButtonPressed(Input.Buttons.LEFT);
+    }
+
+    float getAimPositionX() {
+        return Gdx.input.getX();
+    }
+
+    float getAimPositionY() {
+        return Gdx.graphics.getHeight() - Gdx.input.getY();
     }
 }
