@@ -67,6 +67,7 @@ project(":html") {
 
     dependencies {
         compile project(":core")
+        compile project(":coreEngine")
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
@@ -78,6 +79,7 @@ project(":core") {
 
 
     dependencies {
+        compile project(':coreEngine')
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }

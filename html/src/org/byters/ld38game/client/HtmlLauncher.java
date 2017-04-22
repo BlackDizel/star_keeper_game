@@ -7,13 +7,13 @@ import org.byters.ld38game.GameMain;
 
 public class HtmlLauncher extends GwtApplication {
 
-        @Override
-        public GwtApplicationConfiguration getConfig () {
-                return new GwtApplicationConfiguration(480, 320);
-        }
+    @Override
+    public GwtApplicationConfiguration getConfig() {
+        return new GwtApplicationConfiguration(640, 400);
+    }
 
-        @Override
-        public ApplicationListener createApplicationListener () {
-                return new GameMain();
-        }
+    @Override
+    public ApplicationListener createApplicationListener() {
+        return new GameMain();
+    }
 }
