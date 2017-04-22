@@ -2,10 +2,7 @@ package org.byters.ld38game.view;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.view.IScreen;
-import org.byters.ld38game.controller.ControllerBridge;
-import org.byters.ld38game.controller.ControllerPlanet;
-import org.byters.ld38game.controller.ControllerPlayer;
-import org.byters.ld38game.controller.ControllerRays;
+import org.byters.ld38game.controller.*;
 
 public class ScreenGame implements IScreen {
 
@@ -14,6 +11,7 @@ public class ScreenGame implements IScreen {
     private ViewBridge viewBridge;
     private ViewStars viewStars;
     private ViewRays viewRays;
+    private ViewEnemies viewEnemies;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -22,7 +20,7 @@ public class ScreenGame implements IScreen {
         viewPlanet.draw(batch);
         viewBridge.draw(batch);
         viewStars.draw(batch);
-        //todo draw enemies
+        viewEnemies.draw(batch);
         viewRays.draw(batch);
         viewPlayer.draw(batch);
 
@@ -44,6 +42,9 @@ public class ScreenGame implements IScreen {
 
         viewRays = new ViewRays();
         viewRays.load();
+
+        viewEnemies = new ViewEnemies();
+        viewEnemies.load();
     }
 
     @Override
@@ -52,6 +53,9 @@ public class ScreenGame implements IScreen {
         ControllerPlanet.getInstance().update();
         ControllerBridge.getInstance().update();
         ControllerRays.getInstance().update();
+        ControllerEnemies.getInstance().update();
+        ControllerFlower.getInstance().update();
+        ControllerGameFlow.getInstance().update();
     }
 
     @Override
@@ -67,5 +71,6 @@ public class ScreenGame implements IScreen {
         viewBridge.dispose();
         viewStars.dispose();
         viewRays.dispose();
+        viewEnemies.dispose();
     }
 }
