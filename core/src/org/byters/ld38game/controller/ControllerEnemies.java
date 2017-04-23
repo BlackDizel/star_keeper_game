@@ -2,6 +2,7 @@ package org.byters.ld38game.controller;
 
 
 import com.badlogic.gdx.Gdx;
+import org.byters.engine.controller.ControllerMain;
 import org.byters.ld38game.model.EnemyInfo;
 import org.byters.ld38game.model.StarInfo;
 
@@ -9,18 +10,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ControllerEnemies {
+    private static final int MAX_ENEMY_NUM = 20;
     private static ControllerEnemies instance;
 
     private ArrayList<EnemyInfo> lEnemies;
+    private long lastTimeCreateMillis;
+    private long timeCreateDelayMillis;
 
     private ControllerEnemies() {
-        //todo implement
-        lEnemies = new ArrayList<EnemyInfo>();
-        lEnemies.add(new EnemyInfo(Gdx.graphics.getWidth() / 20, Gdx.graphics.getHeight() / 20 * 15));
-        lEnemies.add(new EnemyInfo(Gdx.graphics.getWidth() / 20 * 10, Gdx.graphics.getHeight() / 20 * 12));
-        lEnemies.add(new EnemyInfo(Gdx.graphics.getWidth() / 20 * 12, Gdx.graphics.getHeight() / 20 * 16));
-        lEnemies.add(new EnemyInfo(Gdx.graphics.getWidth() / 20 * 15, Gdx.graphics.getHeight() / 20 * 14));
-        lEnemies.add(new EnemyInfo(Gdx.graphics.getWidth() / 20 * 18, Gdx.graphics.getHeight() / 20 * 18));
+        generateNewDelay();
     }
 
     public static ControllerEnemies getInstance() {
@@ -47,6 +45,8 @@ public class ControllerEnemies {
     }
 
     public void update() {
+        checkNewEnemy();
+
         if (lEnemies == null) return;
 
         Iterator<EnemyInfo> iterator = lEnemies.iterator();
@@ -69,6 +69,21 @@ public class ControllerEnemies {
         }
     }
 
+    private void checkNewEnemy() {
+        if (lastTimeCreateMillis + timeCreateDelayMillis > System.currentTimeMillis()
+                || lEnemies != null && lEnemies.size() > MAX_ENEMY_NUM) return;
+        if (lEnemies == null) lEnemies = new ArrayList<EnemyInfo>();
+        lEnemies.add(new EnemyInfo(ControllerMain.getInstance().getRandom().nextFloat() * Gdx.graphics.getWidth(),
+                ControllerMain.getInstance().getRandom().nextFloat() * Gdx.graphics.getHeight()));
+
+        generateNewDelay();
+    }
+
+    private void generateNewDelay() {
+        lastTimeCreateMillis = System.currentTimeMillis();
+        timeCreateDelayMillis = 1000 + (int) (ControllerMain.getInstance().getRandom().nextFloat() * 2000);
+    }
+
     boolean isStarAttacked(StarInfo star) {
         if (lEnemies == null) return false;
 
@@ -76,5 +91,30 @@ public class ControllerEnemies {
             if (item.isAttacking(star))
                 return true;
         return false;
+    }
+
+    public boolean isMove(int i) {
+        EnemyInfo item = getEnemyInfo(i);
+        return item != null && item.isMove();
+    }
+
+    public boolean isBorn(int i) {
+        EnemyInfo item = getEnemyInfo(i);
+        return item != null && item.isBorn();
+    }
+
+    public boolean isAttack(int i) {
+        EnemyInfo item = getEnemyInfo(i);
+        return item != null && item.isAttack();
+    }
+
+    public boolean isDie(int i) {
+        EnemyInfo item = getEnemyInfo(i);
+        return item != null && item.isDie();
+    }
+
+    public long getLastTimeStateChanged(int i){
+        EnemyInfo item = getEnemyInfo(i);
+        return item == null ?0:item.getLastTimeStateChanged();
     }
 }

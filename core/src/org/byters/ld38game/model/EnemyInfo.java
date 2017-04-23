@@ -10,6 +10,7 @@ public class EnemyInfo {
     private static float originY;
     private static float originRadius;
     private static float attack_distance;
+    private EnemyState state;
 
     private float positionX;
     private float positionY;
@@ -24,6 +25,7 @@ public class EnemyInfo {
         finalPositionX = 0;
         finalPositionY = 0;
         health = 3;
+        state = new EnemyState();
     }
 
     public static void setOrigin(float originX, float originY) {
@@ -57,10 +59,22 @@ public class EnemyInfo {
 
     public void update() {
         if (isNoDirection()) return;
-        if (PointInt.distance(getPositionCenterX(), getPositionCenterY(), finalPositionX, finalPositionY) < attack_distance)
+        checkMove();
+
+        state.checkState(health);
+    }
+
+    private void checkMove() {
+        if (isArrived() || !state.isMove())
             return;
         positionX += direction.x * Gdx.graphics.getDeltaTime();
         positionY += direction.y * Gdx.graphics.getDeltaTime();
+    }
+
+    private boolean isArrived() {
+        boolean isArrived = PointInt.distance(getPositionCenterX(), getPositionCenterY(), finalPositionX, finalPositionY) < attack_distance;
+        if (isArrived) state.setAttack();
+        return isArrived;
     }
 
     public boolean isAttacking(StarInfo item) {
@@ -68,7 +82,7 @@ public class EnemyInfo {
     }
 
     public boolean isToRemove() {
-        return health <= 0;
+        return state.isToRemove();
     }
 
     public float getPositionCenterX() {
@@ -82,5 +96,25 @@ public class EnemyInfo {
 
     public void kick() {
         health -= 1;//todo implement
+    }
+
+    public boolean isMove() {
+        return state.isMove();
+    }
+
+    public boolean isBorn() {
+        return state.isBorn();
+    }
+
+    public boolean isAttack() {
+        return state.isAttack();
+    }
+
+    public  boolean isDie() {
+        return state.isDie();
+    }
+
+    public long getLastTimeStateChanged() {
+        return state.getLastTimeStateChanged();
     }
 }
