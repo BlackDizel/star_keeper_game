@@ -9,9 +9,10 @@ import org.byters.ld38game.model.RayInfo;
 
 
 class ViewRays {
-    public static final float START_WIDTH = 0.5f;
+    private static final float START_WIDTH = 0.5f;
     private static final String TEXTURE_RAY = "textures/ray.png";
     private TextureRegion tRay;
+    private float rayLength;
 
     void draw(SpriteBatch batch) {
         for (int i = 0; i < ControllerRays.getInstance().getRaysNum(); ++i) {
@@ -19,7 +20,7 @@ class ViewRays {
             batch.draw(tRay,
                     ControllerRays.getInstance().getPositionRayX(i), ControllerRays.getInstance().getPositionRayY(i),
                     0, tRay.getTexture().getHeight() / 2,
-                    getRayLength(), tRay.getTexture().getHeight(),
+                    rayLength, tRay.getTexture().getHeight(),
                     1, getRayScale(i),
                     ControllerRays.getInstance().getRotationRay(i)
             );
@@ -39,6 +40,7 @@ class ViewRays {
         tRay = new TextureRegion(new Texture(Gdx.files.internal(TEXTURE_RAY)));
         tRay.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         RayInfo.setAttackDistance(tRay.getRegionHeight() / 2);
+        rayLength = getRayLength();
     }
 
     void dispose() {
