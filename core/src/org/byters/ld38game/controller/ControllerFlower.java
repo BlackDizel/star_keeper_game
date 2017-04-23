@@ -27,4 +27,12 @@ public class ControllerFlower {
     boolean isDie() {
         return flowerInfo.idDie();
     }
+
+    public String getFlowerHealth() {
+        return flowerInfo.getHealth();
+    }
+
+    boolean isGrown() {
+        return flowerInfo.isGrown();
+    }
 }
