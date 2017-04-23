@@ -6,7 +6,7 @@ public class FlowerInfo {
 
     private static final float STATE_MIDDLE = 0.5f;
     private static final float STATE_DIE = 0;
-    private static final float STATE_GROWN = 5;
+    private static final float STATE_GROWN = 7;
     private float currentState;
 
     public FlowerInfo() {
