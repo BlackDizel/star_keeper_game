@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import org.byters.engine.model.PointInt;
 
 public class EnemyInfo {
-    private static final float SPEED = 20;
+    private static final float SPEED = 40;
     private static float originX;
     private static float originY;
     private static float originRadius;
@@ -32,7 +32,7 @@ public class EnemyInfo {
         EnemyInfo.originX = originX;
         EnemyInfo.originY = originY;
         EnemyInfo.originRadius = (float) PointInt.distance(0, 0, originX, originY);
-        EnemyInfo.attack_distance = originRadius / 3;
+        EnemyInfo.attack_distance = originRadius / 4;
     }
 
     public float getPositionX() {

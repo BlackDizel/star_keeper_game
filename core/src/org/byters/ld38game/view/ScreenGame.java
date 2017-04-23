@@ -1,11 +1,14 @@
 package org.byters.ld38game.view;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.view.IScreen;
 import org.byters.ld38game.controller.*;
 
 public class ScreenGame implements IScreen {
 
+    BitmapFont fontDebug;
     private ViewPlayer viewPlayer;
     // private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
@@ -14,8 +17,6 @@ public class ScreenGame implements IScreen {
     private ViewEnemies viewEnemies;
     private ViewBackground viewBackground;
     private ViewTower viewTower;
-
-    //BitmapFont fontDebug;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -33,7 +34,7 @@ public class ScreenGame implements IScreen {
 
         viewTower.draw(batch);
 
-        //fontDebug.draw(batch, "Flower life debug: "+ ControllerFlower.getInstance().getFlowerHealth(), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/10);
+        fontDebug.draw(batch, "Flower life debug: " + ControllerFlower.getInstance().getFlowerHealth(), Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 10);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class ScreenGame implements IScreen {
         viewTower = new ViewTower();
         viewTower.load();
 
-        // fontDebug = new BitmapFont();
+        fontDebug = new BitmapFont();
     }
 
     @Override

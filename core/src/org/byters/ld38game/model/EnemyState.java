@@ -2,8 +2,8 @@ package org.byters.ld38game.model;
 
 
 class EnemyState {
-    private static final long TIME_BORN = 1000;
-    private static final long TIME_DIE = 1500;
+    private static final long TIME_BORN = 800;
+    private static final long TIME_DIE = 800;
     private long lastTimeStateChange;
     private State state;
 
