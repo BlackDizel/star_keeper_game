@@ -4,28 +4,30 @@ import com.badlogic.gdx.Gdx;
 
 public class ControllerPlayer {
 
-    private static final float SPEED = 100;
-    private static final int DIRECTION_RIGHT = 1;
-    private static final int DIRECTION_LEFT = -1;
-    private static final int DIRECTION_NONE = 0;
+    public static final int DIRECTION_RIGHT = 1;
+    public static final int DIRECTION_LEFT = -1;
+    public static final int DIRECTION_NONE = 0;
+    private static final float SPEED = 50;
     private static ControllerPlayer instance;
     private float xPosition;
     private int moveDirection;
+    private int lookDirection;
     private boolean isBounded;
-
-    public boolean isBounded() {
-        return isBounded;
-    }
 
     private ControllerPlayer() {
         xPosition = Gdx.graphics.getWidth() / 3;
-        moveDirection = 0;
+        moveDirection = DIRECTION_NONE;
+        lookDirection = DIRECTION_RIGHT;
         isBounded = false;
     }
 
     public static ControllerPlayer getInstance() {
         if (instance == null) instance = new ControllerPlayer();
         return instance;
+    }
+
+    boolean isBounded() {
+        return isBounded;
     }
 
     public float getPositionX() {
@@ -43,10 +45,10 @@ public class ControllerPlayer {
     }
 
     float getDelta() {
-        return moveDirection * Gdx.graphics.getDeltaTime() * SPEED;
+        return moveDirection * Gdx.graphics.getDeltaTime() * SPEED * ControllerGameFlow.getInstance().getScale();
     }
 
-    int getMoveDirection() {
+    public int getMoveDirection() {
         return moveDirection;
     }
 
@@ -63,11 +65,16 @@ public class ControllerPlayer {
     }
 
     public void input() {
-        if (ControllerInput.getInstance().isRightPressed())
+        if (ControllerInput.getInstance().isRightPressed()) {
             moveDirection = DIRECTION_RIGHT;
-        else if (ControllerInput.getInstance().isLeftPressed())
+            lookDirection = DIRECTION_RIGHT;
+        } else if (ControllerInput.getInstance().isLeftPressed()) {
             moveDirection = DIRECTION_LEFT;
-        else moveDirection = DIRECTION_NONE;
+            lookDirection = DIRECTION_LEFT;
+        } else moveDirection = DIRECTION_NONE;
     }
 
+    public boolean isPlayerDirectionRight() {
+        return lookDirection == DIRECTION_RIGHT;
+    }
 }
