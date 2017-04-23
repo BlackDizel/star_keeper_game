@@ -68,6 +68,16 @@ public class ControllerStars {
         for (StarInfo item : lStars)
             if (!ControllerEnemies.getInstance().isStarAttacked(item))
                 ++power;
-        return power / (float)lStars.size();
+        return power / (float) lStars.size();
+    }
+
+    public float getStarOriginY(int i) {
+        StarInfo star = getStar(i);
+        return star == null ? 0 : star.getOriginY();
+    }
+
+    public float getStarOriginX(int i) {
+        StarInfo star = getStar(i);
+        return star == null ? 0 : star.getOriginX();
     }
 }

@@ -30,4 +30,12 @@ public class StarInfo {
     public float distance(float positionX, float positionY) {
         return (float) PointInt.distance(this.positionX + originX, this.positionY + originY, positionX, positionY);
     }
+
+    public float getOriginX() {
+        return originX;
+    }
+
+    public float getOriginY() {
+        return originY;
+    }
 }
