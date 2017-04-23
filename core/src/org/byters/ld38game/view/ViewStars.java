@@ -14,12 +14,15 @@ class ViewStars {
 
     private Texture tStar;
     private Texture tRope;
+    private int drawRopesNum;
 
     void draw(SpriteBatch batch) {
         for (int i = 0; i < ControllerStars.getInstance().getStarsNum(); ++i) {
-            batch.draw(tRope,
-                    getRopePositionX(i), getRopePositionY(i),
-                    tRope.getWidth() * ControllerGameFlow.getInstance().getScale(), Gdx.graphics.getHeight());
+
+            for (int r = 0; r < drawRopesNum; ++r)
+                batch.draw(tRope,
+                        getRopePositionX(i), getRopePositionY(i) + r * tRope.getHeight() * ControllerGameFlow.getInstance().getScale(),
+                        tRope.getWidth() * ControllerGameFlow.getInstance().getScale(), tRope.getHeight() * ControllerGameFlow.getInstance().getScale());
 
             batch.draw(tStar,
                     ControllerStars.getInstance().getPositionStarX(i), ControllerStars.getInstance().getPositionStarY(i),
@@ -41,6 +44,8 @@ class ViewStars {
 
         tRope = new Texture(Gdx.files.internal(TEXTURE_ROPE));
         tRope.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+
+        drawRopesNum = Gdx.graphics.getHeight() / tRope.getHeight() + 1;
     }
 
     void dispose() {
