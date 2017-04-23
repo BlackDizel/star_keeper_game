@@ -13,17 +13,24 @@ public class ScreenGame implements IScreen {
     private ViewRays viewRays;
     private ViewEnemies viewEnemies;
 
+
+    //BitmapFont fontDebug;
+
     @Override
     public void draw(SpriteBatch batch) {
 
         //todo draw background
         viewPlanet.draw(batch);
-        viewBridge.draw(batch);
         viewStars.draw(batch);
         viewEnemies.draw(batch);
-        viewRays.draw(batch);
-        viewPlayer.draw(batch);
 
+        viewBridge.drawBack(batch);
+        viewPlayer.draw(batch);
+        viewBridge.drawFront(batch);
+
+        viewRays.draw(batch);
+
+        //fontDebug.draw(batch, "Flower life debug: "+ ControllerFlower.getInstance().getFlowerHealth(), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/10);
     }
 
     @Override
@@ -45,6 +52,8 @@ public class ScreenGame implements IScreen {
 
         viewEnemies = new ViewEnemies();
         viewEnemies.load();
+
+       // fontDebug = new BitmapFont();
     }
 
     @Override
@@ -56,6 +65,8 @@ public class ScreenGame implements IScreen {
         ControllerEnemies.getInstance().update();
         ControllerFlower.getInstance().update();
         ControllerGameFlow.getInstance().update();
+
+        viewBridge.update();
     }
 
     @Override

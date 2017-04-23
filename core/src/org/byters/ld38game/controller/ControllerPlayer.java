@@ -26,7 +26,7 @@ public class ControllerPlayer {
         return instance;
     }
 
-    boolean isBounded() {
+    public boolean isBounded() {
         return isBounded;
     }
 
@@ -44,7 +44,7 @@ public class ControllerPlayer {
         }
     }
 
-    float getDelta() {
+    public float getDelta() {
         return moveDirection * Gdx.graphics.getDeltaTime() * SPEED * ControllerGameFlow.getInstance().getScale();
     }
 

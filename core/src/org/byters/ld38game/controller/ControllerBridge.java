@@ -18,16 +18,8 @@ public class ControllerBridge {
         return instance;
     }
 
-    public float getPositionFirst() {
-        return deltaX;
-    }
-
-    public float getPositionSecond() {
-        return deltaX > 0 ? deltaX - width : deltaX + width;
-    }
-
     public float getPositionY() {
-        return Gdx.graphics.getHeight() / 6 * 1.5f;
+        return Gdx.graphics.getHeight() / 6 * 2f;
     }
 
 
