@@ -7,6 +7,7 @@ public class FlowerInfo {
     private static final float STATE_MIDDLE = 0.5f;
     private static final float STATE_DIE = 0;
     private static final float STATE_GROWN = 7;
+    private static final float GROW_FACTOR = 0.2f;
     private float currentState;
 
     public FlowerInfo() {
@@ -18,7 +19,7 @@ public class FlowerInfo {
     }
 
     public void update(float starsLightPower) {
-        currentState += (starsLightPower - STATE_MIDDLE) * Gdx.graphics.getDeltaTime();
+        currentState += (starsLightPower - STATE_MIDDLE) * (starsLightPower > STATE_MIDDLE ? GROW_FACTOR : 1) * Gdx.graphics.getDeltaTime();
     }
 
     public String getHealth() {
