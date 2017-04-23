@@ -3,7 +3,7 @@ package org.byters.ld38game.model;
 import com.badlogic.gdx.Gdx;
 
 public class RayInfo {
-    private static final float ALPHA_CHANGE_SPEED = 0.2f;
+    private static final float ALPHA_CHANGE_SPEED = 0.8f;
     private static float ATTACK_DISTANCE;
     private final float positionX;
     private final float positionY;

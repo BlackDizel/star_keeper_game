@@ -9,6 +9,7 @@ import org.byters.ld38game.model.RayInfo;
 
 
 class ViewRays {
+    public static final float START_WIDTH = 0.5f;
     private static final String TEXTURE_RAY = "textures/ray.png";
     private TextureRegion tRay;
 
@@ -19,11 +20,15 @@ class ViewRays {
                     ControllerRays.getInstance().getPositionRayX(i), ControllerRays.getInstance().getPositionRayY(i),
                     0, tRay.getTexture().getHeight() / 2,
                     getRayLength(), tRay.getTexture().getHeight(),
-                    1, 1,
+                    1, getRayScale(i),
                     ControllerRays.getInstance().getRotationRay(i)
             );
         }
         batch.setColor(1, 1, 1, 1);
+    }
+
+    private float getRayScale(int i) {
+        return START_WIDTH + (1 - ControllerRays.getInstance().getAlphaRay(i)) * 5;
     }
 
     private float getRayLength() {
