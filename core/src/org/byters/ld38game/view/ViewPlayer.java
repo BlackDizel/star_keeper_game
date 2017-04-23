@@ -11,7 +11,7 @@ import org.byters.ld38game.controller.ControllerPlayer;
 
 class ViewPlayer {
 
-    private static final float FRAME_DURATION_SECONDS = 0.1f;
+    private static final float FRAME_DURATION_SECONDS = 0.2f;
     private static final int FRAMES_NUM_MOVE = 4;
 
     private static final String TEXTURE_PLAYER = "textures/spr_starkeep.png";

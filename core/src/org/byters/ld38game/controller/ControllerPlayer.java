@@ -7,7 +7,7 @@ public class ControllerPlayer {
     public static final int DIRECTION_RIGHT = 1;
     public static final int DIRECTION_LEFT = -1;
     public static final int DIRECTION_NONE = 0;
-    private static final float SPEED = 50;
+    private static final float SPEED = 30;
     private static ControllerPlayer instance;
     private float xPosition;
     private int moveDirection;
