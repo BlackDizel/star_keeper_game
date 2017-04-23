@@ -22,7 +22,7 @@ public class ScreenGameOver implements IScreen {
         font = new BitmapFont();
 
         layout = new GlyphLayout();
-        layout.setText(font, "Your flower is die, brave hero");
+        layout.setText(font, "Your flower is dead, brave hero");
     }
 
     @Override
