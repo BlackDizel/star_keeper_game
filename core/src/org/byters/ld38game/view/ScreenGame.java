@@ -7,20 +7,21 @@ import org.byters.ld38game.controller.*;
 public class ScreenGame implements IScreen {
 
     private ViewPlayer viewPlayer;
-    private ViewPlanet viewPlanet;
+    // private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
     private ViewStars viewStars;
     private ViewRays viewRays;
     private ViewEnemies viewEnemies;
-
+    private ViewBackground viewBackground;
+    private ViewTower viewTower;
 
     //BitmapFont fontDebug;
 
     @Override
     public void draw(SpriteBatch batch) {
 
-        //todo draw background
-        viewPlanet.draw(batch);
+        viewBackground.draw(batch);
+        //viewPlanet.draw(batch);
         viewStars.draw(batch);
         viewEnemies.draw(batch);
 
@@ -30,6 +31,8 @@ public class ScreenGame implements IScreen {
 
         viewRays.draw(batch);
 
+        viewTower.draw(batch);
+
         //fontDebug.draw(batch, "Flower life debug: "+ ControllerFlower.getInstance().getFlowerHealth(), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/10);
     }
 
@@ -38,8 +41,8 @@ public class ScreenGame implements IScreen {
         viewPlayer = new ViewPlayer();
         viewPlayer.load();
 
-        viewPlanet = new ViewPlanet();
-        viewPlanet.load();
+        // viewPlanet = new ViewPlanet();
+        //  viewPlanet.load();
 
         viewBridge = new ViewBridge();
         viewBridge.load();
@@ -53,7 +56,13 @@ public class ScreenGame implements IScreen {
         viewEnemies = new ViewEnemies();
         viewEnemies.load();
 
-       // fontDebug = new BitmapFont();
+        viewBackground = new ViewBackground();
+        viewBackground.load();
+
+        viewTower = new ViewTower();
+        viewTower.load();
+
+        // fontDebug = new BitmapFont();
     }
 
     @Override
@@ -67,6 +76,7 @@ public class ScreenGame implements IScreen {
         ControllerGameFlow.getInstance().update();
 
         viewBridge.update();
+        viewTower.update();
     }
 
     @Override
@@ -78,10 +88,11 @@ public class ScreenGame implements IScreen {
     @Override
     public void dispose() {
         viewPlayer.dispose();
-        viewPlanet.dispose();
+        //viewPlanet.dispose();
         viewBridge.dispose();
         viewStars.dispose();
         viewRays.dispose();
         viewEnemies.dispose();
+        viewBackground.dispose();
     }
 }
