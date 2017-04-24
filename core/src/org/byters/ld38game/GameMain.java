@@ -5,14 +5,14 @@ import com.badlogic.gdx.graphics.Color;
 
 import org.byters.engine.Engine;
 import org.byters.ld38game.view.HelperFont;
-import org.byters.ld38game.view.ScreenGame;
+import org.byters.ld38game.view.ScreenMenu;
 
 public class GameMain extends ApplicationAdapter {
 
 	@Override
 	public void create () {
 		HelperFont.getInstance().load();
-		Engine.getInstance().create(new ScreenGame());
+		Engine.getInstance().create(new ScreenMenu());
 		setColorClear();
 	}
 
