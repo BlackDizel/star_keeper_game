@@ -2,7 +2,6 @@ package org.byters.ld38game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.view.IScreen;
@@ -12,7 +11,7 @@ public class ScreenGame implements IScreen {
 
     BitmapFont fontDebug;
     private ViewPlayer viewPlayer;
-    // private ViewPlanet viewPlanet;
+    private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
     private ViewStars viewStars;
     private ViewRays viewRays;
@@ -25,7 +24,7 @@ public class ScreenGame implements IScreen {
     public void draw(SpriteBatch batch) {
 
         viewBackground.draw(batch);
-        //viewPlanet.draw(batch);
+        viewPlanet.draw(batch);
         viewStars.draw(batch);
         viewEnemies.draw(batch);
 
@@ -45,8 +44,8 @@ public class ScreenGame implements IScreen {
         viewPlayer = new ViewPlayer();
         viewPlayer.load();
 
-        // viewPlanet = new ViewPlanet();
-        //  viewPlanet.load();
+        viewPlanet = new ViewPlanet();
+        viewPlanet.load();
 
         viewBridge = new ViewBridge();
         viewBridge.load();
@@ -84,6 +83,7 @@ public class ScreenGame implements IScreen {
 
         viewBridge.update();
         viewTower.update();
+        viewPlanet.update();
     }
 
     @Override
@@ -95,7 +95,7 @@ public class ScreenGame implements IScreen {
     @Override
     public void dispose() {
         viewPlayer.dispose();
-        //viewPlanet.dispose();
+        viewPlanet.dispose();
         viewBridge.dispose();
         viewStars.dispose();
         viewRays.dispose();
