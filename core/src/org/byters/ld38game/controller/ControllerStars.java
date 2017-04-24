@@ -11,13 +11,20 @@ public class ControllerStars {
     private ArrayList<StarInfo> lStars;
 
     private ControllerStars() {
-        //todo implement
         lStars = new ArrayList<StarInfo>();
+
+        lStars.add(new StarInfo(-Gdx.graphics.getWidth() / 20*5, Gdx.graphics.getHeight() / 20 * 9));
+
         lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20, Gdx.graphics.getHeight() / 20 * 16));
         lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 4, Gdx.graphics.getHeight() / 20 * 12));
         lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 6, Gdx.graphics.getHeight() / 20 * 18));
-        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 12, Gdx.graphics.getHeight() / 20 * 10));
-        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 17, Gdx.graphics.getHeight() / 20 * 18));
+        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 9, Gdx.graphics.getHeight() / 20 * 8));
+        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 12, Gdx.graphics.getHeight() / 20 * 14));
+        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20 * 17, Gdx.graphics.getHeight() / 20 * 11));
+
+        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20*22, Gdx.graphics.getHeight() / 20 * 13));
+        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20*25, Gdx.graphics.getHeight() / 20 * 17));
+        lStars.add(new StarInfo(Gdx.graphics.getWidth() / 20*29, Gdx.graphics.getHeight() / 20 * 16));
     }
 
     public static ControllerStars getInstance() {
