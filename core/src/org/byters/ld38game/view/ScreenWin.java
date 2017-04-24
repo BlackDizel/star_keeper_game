@@ -1,6 +1,7 @@
 package org.byters.ld38game.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -12,9 +13,12 @@ public class ScreenWin implements IScreen {
 
     private static final String MESSAGE_WIN = "Your flower is grown";
     private static final String TEXTURE_ROSE = "textures/rose/rose_grown.png";
+    private static final String FILE_SONG = "audio/win.mp3";
     private BitmapFont font;
     private GlyphLayout layout;
     private Texture tRose;
+
+    private Music sound;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -36,6 +40,9 @@ public class ScreenWin implements IScreen {
         layout.setText(font, MESSAGE_WIN);
 
         tRose = new Texture(Gdx.files.internal(TEXTURE_ROSE));
+
+        sound = Gdx.audio.newMusic(Gdx.files.internal(FILE_SONG));
+        sound.play();
     }
 
     @Override
@@ -52,5 +59,6 @@ public class ScreenWin implements IScreen {
     public void dispose() {
         font.dispose();
         tRose.dispose();
+        sound.dispose();
     }
 }
