@@ -12,8 +12,8 @@ public class ControllerTowers {
     }
 
     private float checkPos(float pos) {
-        if (pos < boundLeft) return boundRight;
-        if (pos > boundRight) return boundLeft;
+        if (pos < boundLeft) return pos + ControllerBridge.getInstance().getWidth();
+        if (pos > boundRight) return pos - ControllerBridge.getInstance().getWidth();
 
         return pos;
     }
@@ -49,7 +49,7 @@ public class ControllerTowers {
         return positions != null;
     }
 
-    int getBridgeHeightIndex(int x) {
+    int getBridgeHeightIndex(float x) {
         if (positions[2] > positions[1] && positions[1] > positions[0]) {
             if (x < positions[0]) return 0;
             if (x < positions[1]) return 2;

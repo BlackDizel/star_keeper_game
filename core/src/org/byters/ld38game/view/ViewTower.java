@@ -28,7 +28,7 @@ class ViewTower {
         tTower = new Texture(Gdx.files.internal(TEXTURE_TOWER));
 
         ControllerTowers.getInstance().setBounds(-Gdx.graphics.getWidth() / 2, Gdx.graphics.getWidth() + Gdx.graphics.getWidth() / 2);
-        ControllerTowers.getInstance().setPositions(0, Gdx.graphics.getWidth() * 2 / 3f, Gdx.graphics.getWidth() * 4 / 3f);
+        ControllerTowers.getInstance().setPositions(0, Gdx.graphics.getWidth() * 2 / 3f, Gdx.graphics.getWidth() * 4 / 3f + 32);
     }
 
     void dispose() {
