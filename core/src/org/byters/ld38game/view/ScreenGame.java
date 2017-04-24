@@ -83,6 +83,7 @@ public class ScreenGame implements IScreen {
         ControllerTowers.getInstance().update();
 
         viewPlanet.update();
+        viewBackground.update();
     }
 
     @Override
