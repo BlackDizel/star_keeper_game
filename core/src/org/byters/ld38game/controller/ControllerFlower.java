@@ -35,4 +35,8 @@ public class ControllerFlower {
     boolean isGrown() {
         return flowerInfo.isGrown();
     }
+
+    public int getState(){
+        return flowerInfo.getState();
+    }
 }
