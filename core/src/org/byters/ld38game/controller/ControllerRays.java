@@ -73,7 +73,7 @@ public class ControllerRays {
 
     private void addRay() {
         if (lRays == null) lRays = new ArrayList<RayInfo>();
-        lRays.add(new RayInfo(ControllerPlayer.getInstance().getPositionX(), ControllerPlayer.getInstance().getPositionY(),
+        lRays.add(new RayInfo(ControllerPlayer.getInstance().getPositionX() + ControllerPlayer.getInstance().getOriginX(), ControllerPlayer.getInstance().getPositionY() + ControllerPlayer.getInstance().getOriginY(),
                 ControllerInput.getInstance().getAimPositionX(), ControllerInput.getInstance().getAimPositionY()));
     }
 
