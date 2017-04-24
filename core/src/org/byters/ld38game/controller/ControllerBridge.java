@@ -24,10 +24,7 @@ public class ControllerBridge {
             for (PointFloat item : positions) {
                 item.x -= ControllerPlayer.getInstance().getDelta();
 
-                if (item.x < ControllerTowers.getInstance().getBoundLeft())
-                    item.x = item.x + getWidth();
-                if (item.x > ControllerTowers.getInstance().getBoundRight())
-                    item.x = item.x - getWidth();
+                item.x = ControllerTowers.getInstance().checkPos(item.x);
                 item.y = getY(item.x);
             }
         }
