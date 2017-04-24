@@ -1,6 +1,8 @@
 package org.byters.ld38game.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.view.IScreen;
@@ -17,6 +19,7 @@ public class ScreenGame implements IScreen {
     private ViewEnemies viewEnemies;
     private ViewBackground viewBackground;
     private ViewTower viewTower;
+    private Music sound;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -64,6 +67,9 @@ public class ScreenGame implements IScreen {
         viewTower.load();
 
         fontDebug = new BitmapFont();
+
+        sound = Gdx.audio.newMusic(Gdx.files.internal("audio/02 I Hope They Dont Attack.mp3"));
+        sound.play();
     }
 
     @Override
@@ -95,5 +101,6 @@ public class ScreenGame implements IScreen {
         viewRays.dispose();
         viewEnemies.dispose();
         viewBackground.dispose();
+        sound.dispose();
     }
 }
