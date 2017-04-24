@@ -68,7 +68,7 @@ public class ControllerPlayer {
     }
 
     public float getPositionY() {
-        return Gdx.graphics.getHeight() / 3;
+        return ControllerBridge.getInstance().getPositionY(getPositionX()) + 4 * ControllerGameFlow.getInstance().getScale();
     }
 
     public void input() {
