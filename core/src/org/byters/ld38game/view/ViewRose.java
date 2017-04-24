@@ -13,7 +13,11 @@ class ViewRose {
     private static final String TEXTURE_ROSE_3 = "textures/rose/rose3.png";
     private Texture tRose1, tRose2, tRose3;
 
+    private ViewIndicator viewIndicator;
+
     public void draw(SpriteBatch batch) {
+        viewIndicator.draw(batch);
+
         Texture texture = getCurrentStateTexture();
         batch.draw(getCurrentStateTexture()
                 , texture.getWidth() * ControllerGameFlow.getInstance().getScale() / 4
@@ -33,11 +37,19 @@ class ViewRose {
         tRose1 = new Texture(Gdx.files.internal(TEXTURE_ROSE_1));
         tRose2 = new Texture(Gdx.files.internal(TEXTURE_ROSE_2));
         tRose3 = new Texture(Gdx.files.internal(TEXTURE_ROSE_3));
+
+        viewIndicator = new ViewIndicator();
+        viewIndicator.load();
     }
 
     public void dispose() {
         tRose1.dispose();
         tRose2.dispose();
         tRose3.dispose();
+        viewIndicator.dispose();
+    }
+
+    void update() {
+        viewIndicator.update();
     }
 }

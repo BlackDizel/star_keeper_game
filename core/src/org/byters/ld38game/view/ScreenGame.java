@@ -86,6 +86,7 @@ public class ScreenGame implements IScreen {
 
         viewPlanet.update();
         viewBackground.update();
+        viewRose.update();
     }
 
     @Override
