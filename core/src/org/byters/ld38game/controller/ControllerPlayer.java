@@ -9,6 +9,8 @@ public class ControllerPlayer {
     public static final int DIRECTION_NONE = 0;
     private static final float SPEED = 30;
     private static ControllerPlayer instance;
+    private static float originX;
+    private static float originY;
     private float xPosition;
     private int moveDirection;
     private int lookDirection;
@@ -19,6 +21,11 @@ public class ControllerPlayer {
         moveDirection = DIRECTION_NONE;
         lookDirection = DIRECTION_RIGHT;
         isBounded = false;
+    }
+
+    public static void setOrigin(float x, float y) {
+        ControllerPlayer.originX = x;
+        ControllerPlayer.originY = y;
     }
 
     public static ControllerPlayer getInstance() {
@@ -76,5 +83,13 @@ public class ControllerPlayer {
 
     public boolean isPlayerDirectionRight() {
         return lookDirection == DIRECTION_RIGHT;
+    }
+
+    float getOriginX() {
+        return originX;
+    }
+
+    float getOriginY() {
+        return originY;
     }
 }

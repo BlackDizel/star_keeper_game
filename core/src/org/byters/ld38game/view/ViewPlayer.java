@@ -31,6 +31,9 @@ class ViewPlayer {
 
         aPlayer = new Animation<TextureRegion>(FRAME_DURATION_SECONDS, framesMove);
         aPlayer.setPlayMode(Animation.PlayMode.LOOP);
+
+        ControllerPlayer.setOrigin(aPlayer.getKeyFrame(0).getRegionWidth() / 2 * ControllerGameFlow.getInstance().getScale()
+                , aPlayer.getKeyFrame(0).getRegionHeight() / 2 * ControllerGameFlow.getInstance().getScale());
     }
 
     void draw(SpriteBatch batch) {
