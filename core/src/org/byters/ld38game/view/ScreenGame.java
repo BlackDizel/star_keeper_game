@@ -91,7 +91,8 @@ public class ScreenGame implements IScreen {
     @Override
     public void input() {
         ControllerPlayer.getInstance().input();
-        ControllerRays.getInstance().input();
+        if (ControllerRays.getInstance().input())
+            viewRays.playSound();
     }
 
     @Override

@@ -52,12 +52,14 @@ public class ControllerRays {
         return item == null ? 0 : item.getAlpha();
     }
 
-    public void input() {
+    public boolean input() {
         if (ControllerInput.getInstance().isShoot()
                 && shootLastTime + SHOOT_DELAY_MILLIS < System.currentTimeMillis()) {
             addRay();
             shootLastTime = System.currentTimeMillis();
+            return true;
         }
+        return false;
     }
 
     public void update() {

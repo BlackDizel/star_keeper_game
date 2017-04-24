@@ -1,6 +1,7 @@
 package org.byters.ld38game.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -12,9 +13,11 @@ import org.byters.ld38game.model.RayInfo;
 class ViewRays {
     private static final float START_WIDTH = 0.5f;
     private static final String TEXTURE_RAY2 = "textures/ray2.png";
+    private static final String FILE_SOUND = "audio/shoot01.mp3";
 
     private TextureRegion tRay2;
     private float rayLength;
+    private Sound sound;
 
     void draw(SpriteBatch batch) {
         for (int i = 0; i < ControllerRays.getInstance().getRaysNum(); ++i) {
@@ -43,9 +46,15 @@ class ViewRays {
         tRay2.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         RayInfo.setAttackDistance(tRay2.getRegionWidth() * ControllerGameFlow.getInstance().getScale() * 2);
         rayLength = getRayLength();
+        sound = Gdx.audio.newSound(Gdx.files.internal(FILE_SOUND));
     }
 
     void dispose() {
         tRay2.getTexture().dispose();
+        sound.dispose();
+    }
+
+    public void playSound() {
+        sound.play();
     }
 }
