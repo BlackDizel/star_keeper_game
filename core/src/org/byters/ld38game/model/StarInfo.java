@@ -3,6 +3,8 @@ package org.byters.ld38game.model;
 
 import org.byters.engine.controller.ControllerMain;
 import org.byters.engine.model.PointInt;
+import org.byters.ld38game.controller.ControllerPlayer;
+import org.byters.ld38game.controller.ControllerTowers;
 
 public class StarInfo {
     private static final long TIME_CHANGE_DIRECTION_MILLIS = 2000;
@@ -54,5 +56,13 @@ public class StarInfo {
 
     public float getOriginY() {
         return originY;
+    }
+
+    public void update() {
+        if (ControllerPlayer.getInstance().isBounded()) {
+            positionX -= ControllerPlayer.getInstance().getDelta();
+
+            positionX = ControllerTowers.getInstance().checkPos(positionX);
+        }
     }
 }

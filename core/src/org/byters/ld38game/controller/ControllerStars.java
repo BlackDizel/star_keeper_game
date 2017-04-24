@@ -43,6 +43,12 @@ public class ControllerStars {
         return star == null ? 0 : star.getPositionY();
     }
 
+    public void update() {
+        if (lStars == null) return;
+        for (StarInfo info : lStars)
+            info.update();
+    }
+
     StarInfo getNearestStar(float positionX, float positionY) {
         if (lStars == null) return null;
 

@@ -11,7 +11,7 @@ public class ControllerTowers {
         return instance;
     }
 
-    private float checkPos(float pos) {
+    public float checkPos(float pos) {
         if (pos < boundLeft) return pos + ControllerBridge.getInstance().getWidth();
         if (pos > boundRight) return pos - ControllerBridge.getInstance().getWidth();
 

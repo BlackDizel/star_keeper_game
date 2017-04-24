@@ -3,6 +3,8 @@ package org.byters.ld38game.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import org.byters.engine.model.PointInt;
+import org.byters.ld38game.controller.ControllerPlayer;
+import org.byters.ld38game.controller.ControllerTowers;
 
 public class EnemyInfo {
     private static final float SPEED = 40;
@@ -58,6 +60,14 @@ public class EnemyInfo {
     }
 
     public void update() {
+        if (ControllerPlayer.getInstance().isBounded()) {
+            positionX -= ControllerPlayer.getInstance().getDelta();
+            positionX = ControllerTowers.getInstance().checkPos(positionX);
+
+            finalPositionX -= ControllerPlayer.getInstance().getDelta();
+            finalPositionX = ControllerTowers.getInstance().checkPos(finalPositionX);
+        }
+
         if (isNoDirection()) return;
         checkMove();
 

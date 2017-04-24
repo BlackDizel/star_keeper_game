@@ -94,6 +94,7 @@ public class ScreenGame implements IScreen, ListenerEnemy {
         ControllerFlower.getInstance().update();
         ControllerGameFlow.getInstance().update();
         ControllerTowers.getInstance().update();
+        ControllerStars.getInstance().update();
 
         viewPlanet.update();
         viewBackground.update();
