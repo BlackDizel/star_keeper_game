@@ -71,6 +71,14 @@ public class ControllerBridge {
         return positions[index].y;
     }
 
+    public float getPositionY(float xPosition) {
+        if (positions == null) return 0;
+        for (PointFloat item : positions)
+            if (item.x < xPosition && xPosition - item.x < width)
+                return item.y;
+        return 0;
+    }
+
     public float getBridgePositionX(int index) {
         return positions[index].x;
     }
