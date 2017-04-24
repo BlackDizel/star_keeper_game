@@ -7,20 +7,20 @@ public class ControllerFlower {
 
     private FlowerInfo flowerInfo;
 
+    private ControllerFlower() {
+        reset();
+    }
+
     public static ControllerFlower getInstance() {
         if (instance == null) instance = new ControllerFlower();
         return instance;
-    }
-
-    private ControllerFlower(){
-        reset();
     }
 
     private void reset() {
         flowerInfo = new FlowerInfo();
     }
 
-    public void update(){
+    public void update() {
         flowerInfo.update(ControllerStars.getInstance().getStarsLightPower());
     }
 
@@ -36,7 +36,11 @@ public class ControllerFlower {
         return flowerInfo.isGrown();
     }
 
-    public int getState(){
+    public int getState() {
         return flowerInfo.getState();
+    }
+
+    public boolean isGrow() {
+        return flowerInfo.isGrow();
     }
 }

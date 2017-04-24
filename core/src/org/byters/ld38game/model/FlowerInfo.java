@@ -13,9 +13,11 @@ public class FlowerInfo {
     private static final float STATE_GROWN = 7.5f;
 
     private float currentState;
+    private boolean isGrow;
 
     public FlowerInfo() {
         this.currentState = STATE_30;
+        isGrow = false;
     }
 
     public boolean idDie() {
@@ -23,6 +25,7 @@ public class FlowerInfo {
     }
 
     public void update(float starsLightPower) {
+        isGrow = starsLightPower - POWER_MIDDLE > 0;
         currentState += (starsLightPower - POWER_MIDDLE) * (starsLightPower > POWER_MIDDLE ? GROW_FACTOR : 1) * Gdx.graphics.getDeltaTime();
     }
 
@@ -41,5 +44,9 @@ public class FlowerInfo {
                 : currentState < STATE_60
                 ? 1
                 : 2;
+    }
+
+    public boolean isGrow() {
+        return isGrow;
     }
 }
