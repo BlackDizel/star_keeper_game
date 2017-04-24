@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 
 public class FlowerInfo {
 
-    private static final float POWER_MIDDLE = 0.5f;
+    private static final float POWER_MIDDLE = 0.7f;
     private static final float STATE_DIE = 0;
     private static final float GROW_FACTOR = 0.2f;
 
