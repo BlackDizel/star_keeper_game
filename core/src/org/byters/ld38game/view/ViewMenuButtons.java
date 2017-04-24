@@ -27,9 +27,9 @@ public class ViewMenuButtons {
     }
 
     void input() {
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+        if (Gdx.input.justTouched()) {
             if (isContainsMouse(tButtonStart, buttonStartX, buttonStartY))
-                ControllerMain.getInstance().navigateScreen(new ScreenGame());
+                ControllerMain.getInstance().navigateScreen(new ScreenStory());
             else if (isContainsMouse(tButtonExit, buttonExitX, buttonExitY))
                 Gdx.app.exit();
         }
