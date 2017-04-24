@@ -2,14 +2,13 @@ package org.byters.ld38game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.view.IScreen;
 import org.byters.ld38game.controller.*;
 
 public class ScreenGame implements IScreen {
 
-    BitmapFont fontDebug;
+    private static final String FILE_SONG = "audio/02 I Hope They Dont Attack.mp3";
     private ViewPlayer viewPlayer;
     private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
@@ -18,6 +17,8 @@ public class ScreenGame implements IScreen {
     private ViewEnemies viewEnemies;
     private ViewBackground viewBackground;
     private ViewTower viewTower;
+    private ViewRose viewRose;
+
     private Music sound;
 
     @Override
@@ -36,7 +37,7 @@ public class ScreenGame implements IScreen {
 
         viewTower.draw(batch);
 
-        fontDebug.draw(batch, "Flower life debug: " + ControllerFlower.getInstance().getFlowerHealth(), Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 10);
+        viewRose.draw(batch);
     }
 
     @Override
@@ -65,9 +66,10 @@ public class ScreenGame implements IScreen {
         viewTower = new ViewTower();
         viewTower.load();
 
-        fontDebug = new BitmapFont();
+        viewRose = new ViewRose();
+        viewRose.load();
 
-        sound = Gdx.audio.newMusic(Gdx.files.internal("audio/02 I Hope They Dont Attack.mp3"));
+        sound = Gdx.audio.newMusic(Gdx.files.internal(FILE_SONG));
         sound.play();
     }
 
@@ -101,6 +103,7 @@ public class ScreenGame implements IScreen {
         viewRays.dispose();
         viewEnemies.dispose();
         viewBackground.dispose();
+        viewRose.dispose();
         sound.dispose();
     }
 }
