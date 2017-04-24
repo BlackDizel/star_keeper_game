@@ -80,9 +80,9 @@ public class ScreenGame implements IScreen {
         ControllerEnemies.getInstance().update();
         ControllerFlower.getInstance().update();
         ControllerGameFlow.getInstance().update();
+        ControllerTowers.getInstance().update();
 
         viewBridge.update();
-        viewTower.update();
         viewPlanet.update();
     }
 
