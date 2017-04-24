@@ -2,13 +2,18 @@ package org.byters.ld38game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.byters.engine.view.IScreen;
 import org.byters.ld38game.controller.*;
+import org.byters.ld38game.controller.listeners.ListenerEnemy;
 
-public class ScreenGame implements IScreen {
+public class ScreenGame implements IScreen, ListenerEnemy {
 
     private static final String FILE_SONG = "audio/02 I Hope They Dont Attack.mp3";
+    private static final String FILE_ENEMY_BORN = "audio/spawn04.mp3";
+    private static final String FILE_ENEMY_DIE = "audio/death01.mp3";
+
     private ViewPlayer viewPlayer;
     private ViewPlanet viewPlanet;
     private ViewBridge viewBridge;
@@ -20,6 +25,7 @@ public class ScreenGame implements IScreen {
     private ViewRose viewRose;
 
     private Music sound;
+    private Sound soundEnemyBorn, soundEnemyDie;
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -71,6 +77,11 @@ public class ScreenGame implements IScreen {
 
         sound = Gdx.audio.newMusic(Gdx.files.internal(FILE_SONG));
         sound.play();
+
+        soundEnemyBorn = Gdx.audio.newSound(Gdx.files.internal(FILE_ENEMY_BORN));
+        soundEnemyDie = Gdx.audio.newSound(Gdx.files.internal(FILE_ENEMY_DIE));
+
+        ControllerEnemies.getInstance().setListener(this);
     }
 
     @Override
@@ -107,5 +118,17 @@ public class ScreenGame implements IScreen {
         viewBackground.dispose();
         viewRose.dispose();
         sound.dispose();
+
+        ControllerEnemies.getInstance().removeListener();
+    }
+
+    @Override
+    public void onBorn() {
+        soundEnemyBorn.play();
+    }
+
+    @Override
+    public void onDie() {
+        soundEnemyDie.play();
     }
 }

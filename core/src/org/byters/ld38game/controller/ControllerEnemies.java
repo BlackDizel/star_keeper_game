@@ -9,7 +9,7 @@ import org.byters.ld38game.model.StarInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ControllerEnemies {
+public class ControllerEnemies extends ControllerEnemiesBase {
     private static final int MAX_ENEMY_NUM = 20;
     private static ControllerEnemies instance;
 
@@ -62,8 +62,10 @@ public class ControllerEnemies {
             if (ControllerRays.getInstance().isAttacking(item.getPositionCenterX(), item.getPositionCenterY()))
                 item.kick();
 
-            if (item.isToRemove())
+            if (item.isToRemove()) {
+                notifyListenerIsDie();
                 iterator.remove();
+            }
 
             item.update();
         }
@@ -76,6 +78,7 @@ public class ControllerEnemies {
         lEnemies.add(new EnemyInfo(ControllerMain.getInstance().getRandom().nextFloat() * Gdx.graphics.getWidth(),
                 ControllerMain.getInstance().getRandom().nextFloat() * Gdx.graphics.getHeight()));
 
+        notifyListenerIsBorn();
         generateNewDelay();
     }
 
@@ -113,8 +116,8 @@ public class ControllerEnemies {
         return item != null && item.isDie();
     }
 
-    public long getLastTimeStateChanged(int i){
+    public long getLastTimeStateChanged(int i) {
         EnemyInfo item = getEnemyInfo(i);
-        return item == null ?0:item.getLastTimeStateChanged();
+        return item == null ? 0 : item.getLastTimeStateChanged();
     }
 }
