@@ -34,7 +34,7 @@ public class EnemyInfo {
         EnemyInfo.originX = originX;
         EnemyInfo.originY = originY;
         EnemyInfo.originRadius = (float) PointInt.distance(0, 0, originX, originY);
-        EnemyInfo.attack_distance = originRadius / 4;
+        EnemyInfo.attack_distance = originRadius / 8f;
     }
 
     public float getPositionX() {
@@ -120,7 +120,7 @@ public class EnemyInfo {
         return state.isAttack();
     }
 
-    public  boolean isDie() {
+    public boolean isDie() {
         return state.isDie();
     }
 

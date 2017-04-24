@@ -56,7 +56,7 @@ public class ControllerEnemies extends ControllerEnemiesBase {
             if (item.isNoDirection()) {
                 StarInfo nearestStar = ControllerStars.getInstance().getNearestStar(item.getPositionCenterX(), item.getPositionCenterY());
                 if (nearestStar != null)
-                    item.setFinalPosition(nearestStar.getPositionX(), nearestStar.getPositionY());
+                    item.setFinalPosition(nearestStar.getPositionX() + nearestStar.getOriginX(), nearestStar.getPositionY() + nearestStar.getOriginY());
             }
 
             if (ControllerRays.getInstance().isAttacking(item.getPositionCenterX(), item.getPositionCenterY()))
